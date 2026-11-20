@@ -1,3 +1,4 @@
 pub mod game;
 pub mod board;
 pub mod history;
+pub mod player;
