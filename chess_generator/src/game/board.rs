@@ -1,6 +1,6 @@
-use std::{io, str::FromStr};
+use std::{str::FromStr};
 
-use shakmaty::{Chess, Color, FromSetup, Move, Position, fen::Fen, CastlingMode};
+use shakmaty::{Chess, Color, Move, Position, fen::Fen, CastlingMode};
 
 pub struct Board {
     position: Chess

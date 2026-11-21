@@ -1,9 +1,10 @@
-use shakmaty::Move;
+use shakmaty::{Color, Move};
 
 pub struct HistoryEntry {
     pub move_number: u32,
-    pub player: String,
+    pub player: Color,
     pub played_move: Move,
+    pub fen: String,
 }
 
 pub struct History {
@@ -23,5 +24,21 @@ impl History {
 
     pub fn entries(&self) -> &[HistoryEntry] {
         &self.entries
+    }
+
+    pub fn len(&self) -> usize {
+        self.entries.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.entries.is_empty()
+    }
+
+    pub fn last(&self) -> Option<&HistoryEntry> {
+        self.entries.last()
+    }
+
+    pub fn clear(&mut self) {
+        self.entries.clear();
     }
 }
