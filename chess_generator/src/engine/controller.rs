@@ -38,8 +38,6 @@ impl Controller {
     pub fn play_turn(&mut self) -> Result<(), MatchError> {
         let current_color = self.game.board().side_to_move();
         let bot = self.get_bot(current_color);
-        let bot_name = bot.name().to_string();
-
         let bot_name = bot.name().to_string();  
 
         let mv = bot.make_move(self.game.board())
