@@ -14,7 +14,7 @@ pub struct MinimaxBot {
 impl MinimaxBot {
     pub fn new(depth: u8) -> Self {
         Self {
-            name: "MinimaxBot".to_string(),
+            name: format!("MinimaxBot - {depth}"),
             depth,
         }
     }

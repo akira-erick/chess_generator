@@ -10,7 +10,7 @@ mod engine;
 mod rendering;
 
 fn main() {
-    let white = Box::new(RandoBot::new());
+    let white = Box::new(MinimaxBot::new(2));
     let black = Box::new(MinimaxBot::new(3));
 
     let mut controller = Controller::new(white, black);
