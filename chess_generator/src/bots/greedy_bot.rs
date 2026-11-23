@@ -1,5 +1,5 @@
 use rand::random_range;
-use shakmaty::{Chess, Move, Piece, Position, Role};
+use shakmaty::{Move, Position, Role};
 
 use crate::{bots::bot::Bot, game::board::Board};
 
@@ -27,8 +27,10 @@ impl GreedyBot {
 
     fn captured_piece_value(position: &shakmaty::Board, mv: Move) -> i32 {
         match mv {
-            Move::Normal {capture, .. } => {
-                if let Some(role) = capture {
+            Move::Normal {capture, promotion, .. } => {
+                if let Some(role) = promotion {
+                    GreedyBot::piece_value(role)
+                } else if let Some(role) = capture {
                     GreedyBot::piece_value(role)
                 } else {
                     0

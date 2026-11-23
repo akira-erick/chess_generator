@@ -17,16 +17,15 @@ fn main() {
 
     match result {
         Ok(status) => {
+            let history = controller.game().history();
+            println!("Game history:");
+            print_match(history);
 
             println!("Game finished with status: {:?}", status);
             if status == GameStatus::WhiteWon || status == GameStatus::BlackWon {
                 let winner = if status == GameStatus::WhiteWon { controller.get_bot(Color::White) } else { controller.get_bot(Color::Black) };
                 println!("The winner is: {}", winner.name());
             }
-            
-            let history = controller.game().history();
-            println!("Game history:");
-            print_match(history);
         }
         Err(e) => {
             match e {
