@@ -1,6 +1,6 @@
 use shakmaty::Color;
 
-use crate::{bots::{greedy_bot::GreedyBot, rando_bot::RandoBot}, engine::controller::{Controller, MatchError}, game::game::GameStatus, rendering::rendering::print_match};
+use crate::{bots::{greedy_bot::GreedyBot, minimax::MinimaxBot, rando_bot::RandoBot}, engine::controller::{Controller, MatchError}, game::game::GameStatus, rendering::rendering::print_match};
 
 mod game;
 mod bots;
@@ -9,7 +9,7 @@ mod rendering;
 
 fn main() {
     let white = Box::new(RandoBot::new());
-    let black = Box::new(GreedyBot::new());
+    let black = Box::new(MinimaxBot::new(3));
 
     let mut controller = Controller::new(white, black);
 
