@@ -1,6 +1,8 @@
+use std::fs::write;
+
 use shakmaty::Color;
 
-use crate::{bots::{greedy_bot::GreedyBot, minimax::MinimaxBot, rando_bot::RandoBot}, engine::controller::{Controller, MatchError}, game::game::GameStatus, rendering::rendering::print_match};
+use crate::{bots::{greedy_bot::GreedyBot, minimax::MinimaxBot, rando_bot::RandoBot}, engine::controller::{Controller, MatchError}, game::game::GameStatus, rendering::rendering::{print_match, to_pgn}};
 
 mod game;
 mod bots;
@@ -26,6 +28,9 @@ fn main() {
                 let winner = if status == GameStatus::WhiteWon { controller.get_bot(Color::White) } else { controller.get_bot(Color::Black) };
                 println!("The winner is: {}", winner.name());
             }
+
+            let pgn = to_pgn(history);
+            write("match.pgn", pgn).unwrap();
         }
         Err(e) => {
             match e {
