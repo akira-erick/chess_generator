@@ -4,6 +4,7 @@ pub struct HistoryEntry {
     pub move_number: u32,
     pub player: Color,
     pub played_move: Move,
+    pub san: String,
     pub fen: String,
 }
 

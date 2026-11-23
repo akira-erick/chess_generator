@@ -1,6 +1,6 @@
 use std::{str::FromStr};
 
-use shakmaty::{Chess, Color, Move, Position, fen::Fen, CastlingMode};
+use shakmaty::{CastlingMode, Chess, Color, Move, Position, fen::Fen, san::San};
 
 pub struct Board {
     position: Chess
@@ -35,6 +35,10 @@ impl Board {
     pub fn to_fen(&self) -> String {
         Fen::from_position(&self.position.clone(), shakmaty::EnPassantMode::Legal)
             .to_string()
+    }
+
+    pub fn to_san(&self, mv: Move) -> String {
+        San::from_move(&self.position, mv).to_string()
     }
 
     pub fn legal_moves(&self) -> Vec<Move> {

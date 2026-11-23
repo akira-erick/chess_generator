@@ -50,10 +50,13 @@ impl Game {
 
         let fen = self.board.to_fen();
 
+        let san = self.board.to_san(mv);
+
         self.history.add(HistoryEntry {
             move_number,
             player,
             played_move: mv,
+            san,
             fen,
         });
 
